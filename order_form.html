@@ -1,0 +1,37 @@
+{% include 'base.html' %}
+
+<form method="POST" action="/save_order">
+
+Patient Name:
+
+<input name="patient_name">
+
+Phone:
+
+<input name="patient_phone">
+
+Date:
+
+<input type="date" name="order_date">
+
+
+Test:
+
+<select name="test_id">
+
+{% for t in tests %}
+
+<option value="{{t.id}}">
+
+{{t.test_name}}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+
+<button>Create</button>
+
+</form>

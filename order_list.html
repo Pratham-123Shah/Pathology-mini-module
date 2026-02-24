@@ -1,0 +1,62 @@
+{% include 'base.html' %}
+
+<table border="1">
+
+<tr>
+
+<th>ID</th>
+<th>Patient</th>
+<th>Test</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+{% for o in orders %}
+
+<tr>
+
+<td>{{o.order_id}}</td>
+
+<td>{{o.patient_name}}</td>
+
+<td>{{o.test_name}}</td>
+
+<td>{{o.status}}</td>
+
+<td>
+
+{% if o.status=="Draft" %}
+
+<form method="POST" action="/change_status">
+
+<input type="hidden" name="id" value="{{o.id}}">
+
+<button name="status" value="Ordered">
+
+Order
+
+</button>
+
+</form>
+
+{% endif %}
+
+
+{% if o.status=="Ordered" %}
+
+<a href="/result/{{o.id}}">
+
+Enter Result
+
+</a>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
